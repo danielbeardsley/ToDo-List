@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  due: 2010-01-07
+  last_seen: 2010-01-07
+  type: 1
+  completed: false
+  date_completed: false
+
+two:
+  title: MyString
+  due: 2010-01-07
+  last_seen: 2010-01-07
+  type: 1
+  completed: false
+  date_completed: false

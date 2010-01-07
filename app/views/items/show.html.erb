@@ -1,0 +1,33 @@
+<p>
+  <b>Title:</b>
+  <%=h @item.title %>
+</p>
+
+<p>
+  <b>Due:</b>
+  <%=h @item.due %>
+</p>
+
+<p>
+  <b>Last seen:</b>
+  <%=h @item.last_seen %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%=h @item.type %>
+</p>
+
+<p>
+  <b>Completed:</b>
+  <%=h @item.completed %>
+</p>
+
+<p>
+  <b>Date completed:</b>
+  <%=h @item.date_completed %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
