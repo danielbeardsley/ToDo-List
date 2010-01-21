@@ -17,21 +17,15 @@ class ItemsControllerTest < ActionController::TestCase
     should_respond_with :success
   end
 
-  context "get new" do
+  context "an item created" do
     setup do
-      get :new
-    end
-
-    should_respond_with :success
-  end
-
-
-  should "create item" do
-    assert_difference('Item.count') do
       post :create, :item => {:title => "Something", :type => Item.allowed_types.first }
     end
 
-    assert_redirected_to item_path(assigns(:item))
+    should_change('Item count', :by => 1) {Item.count}
+    should_redirect_to("the items view page") { item_path(assigns(:item)) }
+
+    should_set_the_flash_to(/was successfully/)
   end
 
   should "show item" do
@@ -55,5 +49,9 @@ class ItemsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to items_path
+  end
+
+  test "should get" do
+    
   end
 end
