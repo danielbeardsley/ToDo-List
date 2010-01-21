@@ -12,6 +12,10 @@ class Item < ActiveRecord::Base
 
   attr_protected :completed, :completed_date
 
+  named_scope :uncompleted, :conditions => {:completed => false}
+  named_scope :completed, :conditions => {:completed => true}
+  named_scope(:of_type, lambda{|type| {:conditions => {:type => type}}})
+
   def done_it
     self.completed = true
     self.date_completed = Time.now

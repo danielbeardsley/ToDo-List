@@ -12,6 +12,11 @@ class ItemTest < ActiveSupport::TestCase
 
   should_not_allow_mass_assignment_of :completed, :completed_date
 
+  should_have_named_scope :uncompleted, :conditions => {:completed => false}
+  should_have_named_scope :completed, :conditions => {:completed => true}
+
+  should_have_named_scope "of_type('TTT')", {:conditions => {:type => 'TTT'}}
+
   context "an item marked as completed" do
     setup do
       @item = Item.create(:title => "Thing to do", :type => "Task")
