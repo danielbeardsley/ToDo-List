@@ -13,7 +13,7 @@
   </p>
   <p>
     <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= select 'item', 'type', Item.allowed_types  %>
   </p>
   <p>
     <%= f.submit 'Update' %>
