@@ -1,4 +1,8 @@
 class Item < ActiveRecord::Base
+
+  #the default for this is 'type' which conflicts with our type column
+  set_inheritance_column :inheritance_type
+
   def self.allowed_types
     %w{Fun Work Task}
   end
