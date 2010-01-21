@@ -1,18 +1,32 @@
 require 'test_helper'
 
 class ItemsControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:items)
+  context "get index" do
+    setup do
+      get :index
+    end
+
+    should_respond_with :success
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
+  context "get new" do
+    setup do
+      get :new
+    end
+
+    should_respond_with :success
   end
 
-  test "should create item" do
+  context "get new" do
+    setup do
+      get :new
+    end
+
+    should_respond_with :success
+  end
+
+
+  should "create item" do
     assert_difference('Item.count') do
       post :create, :item => {:title => "Something", :type => Item.allowed_types.first }
     end
@@ -20,22 +34,22 @@ class ItemsControllerTest < ActionController::TestCase
     assert_redirected_to item_path(assigns(:item))
   end
 
-  test "should show item" do
+  should "show item" do
     get :show, :id => items(:one).to_param
     assert_response :success
   end
 
-  test "should get edit" do
+  should "get edit" do
     get :edit, :id => items(:one).to_param
     assert_response :success
   end
 
-  test "should update item" do
+  should "update item" do
     put :update, :id => items(:one).to_param, :item => {:title => "Else!!", :type => Item.allowed_types.last }
     assert_redirected_to item_path(assigns(:item))
   end
 
-  test "should destroy item" do
+  should "destroy item" do
     assert_difference('Item.count', -1) do
       delete :destroy, :id => items(:one).to_param
     end
