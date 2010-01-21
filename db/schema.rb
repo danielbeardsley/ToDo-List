@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(:version => 20100107083343) do
     t.date     "due"
     t.string   "type",                              :null => false
     t.boolean  "completed",      :default => false, :null => false
-    t.date     "last_seen"
-    t.date     "date_completed"
+    t.datetime "last_seen"
+    t.datetime "date_completed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

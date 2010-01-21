@@ -5,8 +5,8 @@ class CreateItems < ActiveRecord::Migration
       t.date :due,              :null => true
       t.string :type,           :null => false
       t.boolean :completed,     :null => false, :default => false
-      t.date :last_seen,        :null => true
-      t.date :date_completed,   :null => true
+      t.datetime :last_seen,        :null => true
+      t.datetime :date_completed,   :null => true
 
       t.timestamps
     end
