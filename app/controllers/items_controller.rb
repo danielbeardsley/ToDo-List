@@ -44,6 +44,13 @@ class ItemsController < ApplicationController
     redirect_to(items_url)
   end
 
+  def done_it
+    @item = Item.find(params[:id])
+    @item.done_it
+
+    render :action => :show
+  end
+
   def next_thing
     @item = Item.get_next_thing
   end
