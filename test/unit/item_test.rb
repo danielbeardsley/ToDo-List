@@ -9,4 +9,19 @@ class ItemTest < ActiveSupport::TestCase
 
   should_not_allow_values_for(:type, 'ldkfjs', 'something', :message => /not included/i)
   should_allow_values_for(:type, *Item.allowed_types)
+
+  should_not_allow_mass_assignment_of :completed, :completed_date
+
+  context "an item marked as completed" do
+    setup do
+      @item = Item.create(:title => "Thing to do", :type => "Task")
+      @item.done_it
+      @item.reload
+    end
+
+    should "be marked as completed" do
+      assert @item.completed
+      assert(@item.date_completed <= DateTime.now && @item.date_completed > 1.minute.ago, "date_completed should be right now")
+    end
+  end
 end

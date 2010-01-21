@@ -10,4 +10,11 @@ class Item < ActiveRecord::Base
   validates_inclusion_of :type, :in => allowed_types
   validates_presence_of :title
 
+  attr_protected :completed, :completed_date
+
+  def done_it
+    self.completed = true
+    self.date_completed = Time.now
+    save
+  end
 end
