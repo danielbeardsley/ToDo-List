@@ -1,12 +1,12 @@
 class CreateItems < ActiveRecord::Migration
   def self.up
     create_table :items do |t|
-      t.string :title
-      t.date :due
-      t.integer :type
-      t.boolean :completed
-      t.date :last_seen
-      t.date :date_completed
+      t.string :title,          :null => false
+      t.date :due,              :null => true
+      t.string :type,           :null => false
+      t.boolean :completed,     :null => false, :default => false
+      t.date :last_seen,        :null => true
+      t.date :date_completed,   :null => true
 
       t.timestamps
     end

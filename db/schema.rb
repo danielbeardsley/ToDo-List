@@ -12,10 +12,10 @@
 ActiveRecord::Schema.define(:version => 20100107083343) do
 
   create_table "items", :force => true do |t|
-    t.string   "title"
+    t.string   "title",                             :null => false
     t.date     "due"
-    t.integer  "type"
-    t.boolean  "completed"
+    t.string   "type",                              :null => false
+    t.boolean  "completed",      :default => false, :null => false
     t.date     "last_seen"
     t.date     "date_completed"
     t.datetime "created_at"
