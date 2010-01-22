@@ -44,9 +44,9 @@ class ItemsController < ApplicationController
     redirect_to(items_url)
   end
 
-  def done_it
+  def complete
     @item = Item.find(params[:id])
-    @item.done_it
+    @item.complete
 
     render :action => :show
   end

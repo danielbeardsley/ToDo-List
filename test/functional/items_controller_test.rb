@@ -30,7 +30,7 @@ class ItemsControllerTest < ActionController::TestCase
 
     context "then marked as completed" do
       setup do
-        post 'done_it', :id => @item.id
+        post 'complete', :id => @item.id
         @item.reload
       end
 

@@ -16,7 +16,7 @@ class Item < ActiveRecord::Base
   named_scope :completed, :conditions => {:completed => true}
   named_scope(:of_type, lambda{|type| {:conditions => {:type => type}}})
 
-  def done_it
+  def complete
     self.completed = true
     self.date_completed = Time.now
     save

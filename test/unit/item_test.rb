@@ -20,7 +20,7 @@ class ItemTest < ActiveSupport::TestCase
   context "an item marked as completed" do
     setup do
       @item = Item.create(:title => "Thing to do", :type => "Task")
-      @item.done_it
+      @item.complete
       @item.reload
     end
 
