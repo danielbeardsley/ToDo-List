@@ -4,14 +4,14 @@ one:
   title: MyString
   due: 2010-01-07
   last_seen: 2010-01-07
-  type: 1
+  list_id: 1
   completed: false
   date_completed: false
 
 two:
-  title: MyString
+  title: MyString2
   due: 2010-01-07
   last_seen: 2010-01-07
-  type: 1
+  list_id: 1
   completed: false
   date_completed: false
