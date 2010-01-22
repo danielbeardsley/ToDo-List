@@ -1,20 +1,10 @@
 class Item < ActiveRecord::Base
+  validates_presence_of :title, :list_id
 
-  #the default for this is 'type' which conflicts with our type column
-  set_inheritance_column :inheritance_type
-
-  def self.allowed_types
-    %w{Fun Work Task}
-  end
-
-  validates_inclusion_of :type, :in => allowed_types
-  validates_presence_of :title
-
-  attr_protected :completed, :completed_date
+  attr_protected :completed, :completed_date, :last_seen
 
   named_scope :uncompleted, :conditions => {:completed => false}
   named_scope :completed, :conditions => {:completed => true}
-  named_scope(:of_type, lambda{|type| {:conditions => {:type => type}}})
 
   def complete
     self.completed = true
