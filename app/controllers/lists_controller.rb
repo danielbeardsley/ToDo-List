@@ -31,6 +31,15 @@ class ListsController < ApplicationController
      @item = @list.get_current_item
   end
 
+  def current_item_completed
+    if request.post?
+      @list = List.find(params[:id])
+      item = @list.complete_current_item
+      flash[:notice] = "#{item} completed"
+    end
+    redirect_to lists_url
+  end
+
   def update
     @list = List.find(params[:id])
 

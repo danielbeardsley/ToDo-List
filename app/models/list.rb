@@ -13,12 +13,13 @@ class List < ActiveRecord::Base
   def choose_next_item
     self.current_item = items.next
     self.current_item.update_attribute(:last_seen, Time.now) if self.current_item
-    self.save
+    self.save!
     self.current_item
   end
 
   def complete_current_item
     self.current_item.complete
     self.current_item = nil
+    self.save!
   end
 end

@@ -55,14 +55,15 @@ class ListsControllerTest < ActionController::TestCase
 
       should "mark the current item completed" do
         get :current_item, :id => @list.id
-        item1 = assigns(:item)
+        item = assigns(:item)
         post :current_item_completed, :id => @list.id
-        item2 = assigns(:item)
-        assert_equal item1, item2
-
-        assert item1.completed
-        assert item1.completed_date > 2.seconds.ago
-       
+        assert_redirected_to lists_url
+        @list.reload
+        item.reload
+        
+        assert item.completed
+        assert item.date_completed > 2.seconds.ago
+        assert_nil @list.current_item
       end
     end
 
