@@ -42,7 +42,7 @@ class ListsControllerTest < ActionController::TestCase
         
         assert_equal @item, @list.current_item
         assert(@item.last_seen > 2.seconds.ago, "current item should be just seen")
-        assert_contains @item, @list.items.uncompleted
+        assert_contains @list.items.uncompleted, @item
       end
 
       should "return the same item each time" do
