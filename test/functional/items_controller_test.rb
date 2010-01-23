@@ -19,7 +19,7 @@ class ItemsControllerTest < ActionController::TestCase
 
   context "an item created" do
     setup do
-      post :create, :item => {:title => "Something", :type => Item.allowed_types.first }
+      post :create, :item => {:title => "Something", :list_id => List.first.id}
       @item = assigns(:item)
     end
 
@@ -56,7 +56,7 @@ class ItemsControllerTest < ActionController::TestCase
   end
 
   should "update item" do
-    put :update, :id => items(:one).to_param, :item => {:title => "Else!!", :type => Item.allowed_types.last }
+    put :update, :id => items(:one).to_param, :item => {:title => "Else!!"}
     assert_redirected_to item_path(assigns(:item))
   end
 

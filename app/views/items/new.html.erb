@@ -12,10 +12,6 @@
     <%= f.date_select :due %>
   </p>
   <p>
-    <%= f.label :type %><br />
-    <%= select 'item', 'type', Item.allowed_types  %>
-  </p>
-  <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>

@@ -4,14 +4,12 @@
   <tr>
     <th>Title</th>
     <th>Due</th>
-    <th>Type</th>
   </tr>
 
 <% @items.each do |item| %>
   <tr>
     <td><%=h item.title %></td>
     <td><%=h item.due %></td>
-    <td><%=h item.type %></td>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
