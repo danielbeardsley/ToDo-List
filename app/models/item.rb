@@ -11,6 +11,6 @@ class Item < ActiveRecord::Base
   def complete
     self.completed = true
     self.date_completed = Time.now
-    save
+    save!
   end
 end

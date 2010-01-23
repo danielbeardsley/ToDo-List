@@ -8,7 +8,7 @@ class ItemTest < ActiveSupport::TestCase
 
   context "an item marked as completed" do
     setup do
-      @item = Item.create(:title => "Thing to do", :type => "Task")
+      @item = Item.create(:title => "Thing to do", :list_id => 1)
       @item.complete
       @item.reload
     end

@@ -38,15 +38,15 @@ class ListTest < ActiveSupport::TestCase
 
     context "and the current item is completed" do
       setup do
-        @current = @list.get_current_item
+        @current_id = @list.get_current_item.id
         @list.complete_current_item
         @list.reload
       end
 
       should "mark current_item as completed" do
-        @current.reload
-        assert @current.completed
-        assert @current.date_completed > 5.seconds.ago
+        item = Item.find(@current_id)
+        assert item.completed
+        assert item.date_completed > 5.seconds.ago
       end
 
       should "set current_item to null" do
