@@ -12,9 +12,11 @@ class ListTest < ActiveSupport::TestCase
       end
     end
 
-    should "set current_item to one of it's items" do
+    should "have no current_item" do
       assert_nil @list.current_item
+    end
 
+    should "set current_item to one of it's items" do
       @list.choose_next_item
       assert_contains @items, @list.current_item
 
@@ -22,8 +24,6 @@ class ListTest < ActiveSupport::TestCase
     end
 
     should "set current_item when get_current_item is first called" do
-      assert_nil @list.current_item
-
       item = @list.get_current_item
       assert_equal item, @list.current_item
       assert_contains @items, @list.current_item
@@ -31,6 +31,28 @@ class ListTest < ActiveSupport::TestCase
 
     should "return an appropriate item to do" do
       assert_contains @items, @list.items.next
+
+      @list.items.each(&:complete)
+      assert_nil @list.items.next
     end
+
+    context "and the current item is completed" do
+      setup do
+        @current = @list.get_current_item
+        @list.complete_current_item
+        @list.reload
+      end
+
+      should "mark current_item as completed" do
+        @current.reload
+        assert @current.completed
+        assert @current.date_completed > 5.seconds.ago
+      end
+
+      should "set current_item to null" do
+        assert_nil @list.current_item
+      end
+    end
+
   end
 end
