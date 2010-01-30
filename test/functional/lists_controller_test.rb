@@ -69,6 +69,10 @@ class ListsControllerTest < ActionController::TestCase
 
   end
 
+  should "have the correct routes setup" do
+    assert_generates "/", {:controller => :lists, :action => :buttons}
+  end
+
   test "should show list" do
     get :show, :id => lists(:one).to_param
     assert_response :success
