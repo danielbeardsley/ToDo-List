@@ -12,7 +12,7 @@ class CurrentItemControllerTest < ActionController::TestCase
     
     context "who's current item is requested" do
       setup do
-        get :get, :params => {:list_id => @list}
+        get :get, :list_id => @list.to_param
       end
       
       should_respond_with :success
@@ -27,7 +27,7 @@ class CurrentItemControllerTest < ActionController::TestCase
 
       should "get the same current_item when it's requested twice " do
         first_item = @list.get_current_item
-        get :get, :params => {:list_id => @list}
+        get :get, :list_id => @list.to_param
         assert_response :success
 
         assert_response_contains first_item.title

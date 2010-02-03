@@ -37,6 +37,6 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 
   def assert_response_contains str
-    assert @response.body.to_s.index(str)
+    assert_not_nil @response.body.to_s.index(str)
   end
 end
