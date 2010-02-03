@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   
   validates_presence_of :title, :list_id
 
-  attr_protected :completed, :completed_date, :last_seen
+  attr_protected :completed, :completed_date, :last_seen, :list_id
 
   named_scope :uncompleted, :conditions => {:completed => false}
   named_scope :completed, :conditions => {:completed => true}

@@ -1,14 +1,15 @@
 require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
-  should_not_allow_mass_assignment_of :completed, :completed_date, :last_seen
+  should_not_allow_mass_assignment_of :completed, :completed_date, :last_seen, :list_id
 
   should_have_named_scope :uncompleted, :conditions => {:completed => false}
   should_have_named_scope :completed, :conditions => {:completed => true}
 
   context "an item marked as completed" do
     setup do
-      @item = Item.create(:title => "Thing to do", :list_id => 1)
+      @item = Item.new(:title => "Thing to do")
+      @item.list_id = 1
       @item.complete
       @item.reload
     end
