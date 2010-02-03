@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.root :controller => :lists, :action => :buttons
+  
   map.resources :lists, :collection => {:buttons => :get} do |lists|
     lists.resources :items
     lists.resource :current_item, :member => {:get => :get, :complete => :post}
@@ -6,7 +8,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :items
 
-  map.root :controller => :lists, :action => :buttons
 
   # The priority is based upon order of creation: first created -> highest priority.
 
