@@ -33,38 +33,6 @@ class ListsControllerTest < ActionController::TestCase
         @list.items.create(:title => 'item 1a')
         @list.items.create(:title => 'item 1b')
       end
-
-      should "show the current item" do
-        get :current_item, :id => @list.id
-        @list.reload
-        assert_response :success
-        @item = assigns(:item)
-        
-        assert_equal @item, @list.current_item
-        assert(@item.last_seen > 2.seconds.ago, "current item should be just seen")
-        assert_contains @list.items.uncompleted, @item
-      end
-
-      should "return the same item each time" do
-        get :current_item, :id => @list.id
-        item1 = assigns(:item)
-        get :current_item, :id => @list.id
-        item2 = assigns(:item)
-        assert_equal item1, item2
-      end
-
-      should "mark the current item completed" do
-        get :current_item, :id => @list.id
-        item = assigns(:item)
-        post :current_item_completed, :id => @list.id
-        assert_redirected_to lists_url
-        @list.reload
-        item.reload
-        
-        assert item.completed
-        assert item.date_completed > 2.seconds.ago
-        assert_nil @list.current_item
-      end
     end
 
   end
