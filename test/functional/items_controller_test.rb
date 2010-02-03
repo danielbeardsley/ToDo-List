@@ -55,6 +55,6 @@ class ItemsControllerTest < ActionController::TestCase
       delete :destroy, :id => items(:one).to_param
     end
 
-    assert_redirected_to list_items_path(@list.id)
+    assert_redirected_to list_items_path(items(:one).list_id)
   end
 end
