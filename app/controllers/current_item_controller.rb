@@ -4,9 +4,9 @@ class CurrentItemController < ApplicationController
   end
 
   def complete
-    @current_item .complete
+    @list.complete_current_item
     flash[:notice] = "Item completed"
-    redirect_to buttons_list_path
+    redirect_to buttons_lists_path
   end
 
 protected
