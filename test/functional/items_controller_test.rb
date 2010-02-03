@@ -1,48 +1,38 @@
 require 'test_helper'
 
 class ItemsControllerTest < ActionController::TestCase
-  context "get index" do
+  context "" do
     setup do
-      get :index
+      @list = List.create(:name => "List 1")
     end
 
-    should_respond_with :success
-  end
-
-  context "get new" do
-    setup do
-      get :new
-    end
-
-    should_respond_with :success
-  end
-
-  context "an item created" do
-    setup do
-      post :create, :item => {:title => "Something", :list_id => List.first.id}
-      @item = assigns(:item)
-    end
-
-    should_change('Item count', :by => 1) {Item.count}
-    should_redirect_to("the items view page") { item_path(assigns(:item)) }
-
-    should_set_the_flash_to(/was successfully/)
-
-    context "then marked as completed" do
+    context "get index" do
       setup do
-        post 'complete', :id => @item.id
-        @item.reload
+        get :index, :list_id => @list.to_param
       end
 
-      should "be marked as completed" do
-        assert @item.completed
-        d = @item.date_completed
-        assert(d <= DateTime.now && d > 1.minute.ago, "date_completed should be right now")
-      end
-
-      should_change("Item model's uncompleted count", :by => -1) {Item.uncompleted.count}
+      should_respond_with :success
     end
 
+    context "get new" do
+      setup do
+        get :new, :list_id => @list.to_param
+      end
+
+      should_respond_with :success
+    end
+
+    context "an item created" do
+      setup do
+        post :create, :list_id => @list.to_param, :item => {:title => "Something", }
+        @item = assigns(:item)
+      end
+
+      should_change('Item count', :by => 1) {Item.count}
+      should_redirect_to("Buttons page") { '/lists/buttons' }
+
+      should_set_the_flash_to(/was successfully/)
+    end
   end
 
   should "show item" do
@@ -65,6 +55,6 @@ class ItemsControllerTest < ActionController::TestCase
       delete :destroy, :id => items(:one).to_param
     end
 
-    assert_redirected_to items_path
+    assert_redirected_to list_items_path(@list.id)
   end
 end

@@ -1,34 +1,33 @@
 class ItemsController < ApplicationController
+
+  before_filter :load_item_and_list
+
   def index
-    @items = Item.all
+    @items = @list.items
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def new
-    @item = Item.new
+    @item = @list.items.new
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def create
-    @item = Item.new(params[:item])
+    @item = @list.items.new(params[:item])
 
     if @item.save
       flash[:notice] = 'Item was successfully created.'
-      redirect_to(@item)
+      redirect_to buttons_lists_path
     else
       render :action => "new"
     end
   end
 
   def update
-    @item = Item.find(params[:id])
-
     if @item.update_attributes(params[:item])
       flash[:notice] = 'Item was successfully updated.'
       redirect_to(@item)
@@ -38,20 +37,15 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
+    @list = @item.list
     @item.destroy
 
-    redirect_to(items_url)
+    redirect_to(list_items_path(@list.id))
   end
 
-  def complete
-    @item = Item.find(params[:id])
-    @item.complete
-
-    render :action => :show
-  end
-
-  def next_thing
-    @item = Item.get_next_thing
+  private
+  def load_item_and_list
+    @item = Item.find(params[:id]) if params[:id]
+    @list = List.find(params[:list_id]) if params[:list_id]
   end
 end
