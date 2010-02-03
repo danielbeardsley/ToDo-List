@@ -35,4 +35,8 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def assert_response_contains str
+    assert @response.body.to_s.index(str)
+  end
 end
