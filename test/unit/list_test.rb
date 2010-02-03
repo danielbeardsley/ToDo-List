@@ -4,6 +4,8 @@ class ListTest < ActiveSupport::TestCase
   should_have_many :items
   should_belong_to :current_item
 
+  should_not_allow_mass_assignment_of :current_item_id
+
   context "A List with several items" do
     setup do
       @list = List.create(:name => 'List1')

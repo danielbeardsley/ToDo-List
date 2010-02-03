@@ -4,7 +4,10 @@ class List < ActiveRecord::Base
       uncompleted.to_a.rand
     end
   end
+  
   belongs_to :current_item, :class_name => 'Item'
+
+  attr_protected :current_item_id
 
   def get_current_item
     current_item || choose_next_item
