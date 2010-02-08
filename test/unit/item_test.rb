@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
+  should_belong_to :list
+
   should_not_allow_mass_assignment_of :completed, :completed_date, :last_seen, :list_id
 
   should_have_named_scope :uncompleted, :conditions => {:completed => false}
