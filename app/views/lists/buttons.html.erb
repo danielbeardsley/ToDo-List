@@ -1,14 +1,10 @@
-<h1>Listing lists</h1>
-
-<table>
 <% @lists.each do |list| %>
-  <tr>
-  <%= button_to "Get an item from: #{list.name}", list_current_item_url(list.id) %>
-  <%= link_to "Add an item to: #{list.name}", new_list_current_item_url(list.id) %>
-  </tr>
+  <div class="list_buttons_row">
+  <%= link_to "Get an item from: #{list.name}", get_list_current_item_url(list.id), :method => :post %>
+  <%= link_to "Add an item to: #{list.name}", new_list_item_url(list.id) %>
+  </div>
 <% end %>
-</table>
 
-<br />
+<br/>
 
 <%= link_to 'New list', new_list_path %>
