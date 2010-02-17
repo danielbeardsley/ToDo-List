@@ -35,6 +35,18 @@ class ListsControllerTest < ActionController::TestCase
       end
     end
 
+    context "and updated" do
+      setup do
+        post :update, :id => @list.to_param, :list => { :name => 'new name' }
+      end
+
+      should_redirect_to("the lists view page") { list_path(assigns(:list)) }
+
+      should "be changed" do
+        @list.reload
+        assert_equal 'new name', @list.name
+      end
+    end
   end
 
   should "have the correct routes setup" do
@@ -75,15 +87,14 @@ class ListsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, :id => lists(:one).to_param
-    assert_response :success
+  context "the edit page" do
+    setup do
+      get :edit, :id => lists(:one).to_param
+    end
+    
+    should_respond_with :success
   end
 
-  test "should update list" do
-    put :update, :id => lists(:one).to_param, :list => { }
-    assert_redirected_to list_path(assigns(:list))
-  end
 
   test "should destroy list" do
     assert_difference('List.count', -1) do
