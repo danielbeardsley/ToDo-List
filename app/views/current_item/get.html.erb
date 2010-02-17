@@ -1,5 +1,5 @@
 <% if @current_item %>
-<%= @current_item.title %>
+<div class="current_item"><%= @current_item.title %></div>
 <% else %>
-(Nothing to do left on this List)
+<div class="empty">(Nothing to do left on this List)</div>
 <% end %>
