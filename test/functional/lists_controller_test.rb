@@ -28,6 +28,11 @@ class ListsControllerTest < ActionController::TestCase
 
     should_set_the_flash_to(/was successfully/)
 
+    should "set the attributes correctly" do
+      @list.reload
+      assert_equal "Something", @list.name
+    end
+
     context "with items" do
       setup do
         @list.items.create(:title => 'item 1a')
