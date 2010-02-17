@@ -1,4 +1,4 @@
-<h1>Editing list</h1>
+<h1><%=@list.new_record? ? 'Creating' : 'Editing' %> List</h1>
 
 <% form_for(@list) do |f| %>
   <%= f.error_messages %>
@@ -8,11 +8,7 @@
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :current_item %><br />
-    <%= f.text_field :current_item %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit @list.new_record? ? 'Create' : 'Update' %>
   </p>
 <% end %>
 

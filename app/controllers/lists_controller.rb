@@ -9,6 +9,7 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    render :edit
   end
 
   def edit
