@@ -80,8 +80,8 @@ class ListsControllerTest < ActionController::TestCase
 
       should "show have several links for each list" do
         @lists.each do |l|
-          assert_select "a[href=#{new_list_item_url(l.id)}]", true
-          assert_select "a[href=#{get_list_current_item_url(l.id)}]", true
+          assert_select "a[href=#{new_list_item_path(l.id)}]", true
+          assert_select "a[href=#{get_list_current_item_path(l.id)}]", true
         end
       end
     end
