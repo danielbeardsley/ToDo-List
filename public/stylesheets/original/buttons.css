@@ -48,3 +48,12 @@ a.new_item:hover{
  margin-left:50px;
  text-shadow:1px #cfc;
 }
+
+a.back_door{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  background-color:#ccd;
+  color:#999;
+  text-shadow:none;
+}
