@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :lists, :collection => {:buttons => :get} do |lists|
     lists.resources :items
-    lists.resource :current_item, :member => {:get => :get, :complete => :post}
+    lists.resource :current_item, :member => {:get => :post, :complete => :post}
   end
 
   map.resources :items
