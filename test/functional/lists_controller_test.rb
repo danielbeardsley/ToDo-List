@@ -55,9 +55,16 @@ class ListsControllerTest < ActionController::TestCase
 
       should_respond_with :success
 
-      should "show all lists" do
+      should "show the names of all the lists" do
         @lists.each do |l|
           assert_response_contains l.name
+        end
+      end
+
+      should "show have several links for each list" do
+        @lists.each do |l|
+          assert_select "a[href=#{new_list_item_url(l.id)}]", true
+          assert_select "a[href=#{list_current_item_url(l.id)}]", true
         end
       end
     end
