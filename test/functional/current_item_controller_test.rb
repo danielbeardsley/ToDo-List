@@ -25,6 +25,10 @@ class CurrentItemsControllerTest < ActionController::TestCase
         assert_response_contains @current_item.title
       end
 
+      should "have a link to mark the current item completed" do
+        assert_select "a[href=#{complete_list_current_item_path(@list)}]"
+      end
+
       should "get the same current_item when it's requested twice " do
         post :get, :list_id => @list.to_param
         @list.reload

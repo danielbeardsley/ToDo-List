@@ -3,3 +3,4 @@
 <% else %>
 <div class="empty">(Nothing to do left on this List)</div>
 <% end %>
+<div class="current_item_actions"><%= link_to "This is done!", complete_list_current_item_path(@list), :method => :post %></div>
