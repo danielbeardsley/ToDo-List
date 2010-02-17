@@ -15,6 +15,10 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 
+  def buttons
+    @lists = List.all
+  end
+
   def create
     @list = List.new(params[:list])
 

@@ -41,6 +41,28 @@ class ListsControllerTest < ActionController::TestCase
     assert_generates "/", {:controller => :lists, :action => :buttons}
   end
 
+  context "with several lists" do
+    setup do
+      @lists = (1..3).map do |i|
+        Factory.create :empty_list, :name => "List #{i}"
+      end
+    end
+
+    context "the buttons page" do
+      setup do
+        get :buttons
+      end
+
+      should_respond_with :success
+
+      should "show all lists" do
+        @lists.each do |l|
+          assert_response_contains l.name
+        end
+      end
+    end
+  end
+
   test "should show list" do
     get :show, :id => lists(:one).to_param
     assert_response :success
