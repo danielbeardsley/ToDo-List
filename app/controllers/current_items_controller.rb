@@ -1,4 +1,4 @@
-class CurrentItemController < ApplicationController
+class CurrentItemsController < ApplicationController
   before_filter :load_item_and_list
   def get
   end
