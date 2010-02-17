@@ -1,10 +1,12 @@
+<div class="center_me">
 <% @lists.each do |list| %>
   <div class="list_buttons_row">
-  <%= link_to "Get an item from: #{list.name}", get_list_current_item_path(list), :method => :post %>
-  <%= link_to "Add an item to: #{list.name}", new_list_item_path(list) %>
+    <div class="list_name"><%= list.name %></div>
+  <%= link_to "Get an item", get_list_current_item_path(list), :class => 'get_item', :method => :post %>
+  <%= link_to "Add an item", new_list_item_path(list), :class => 'new_item' %>
+  <div class='clear'></div>
   </div>
 <% end %>
 
-<br/>
-
 <%= link_to 'New list', new_list_path %>
+</div>
