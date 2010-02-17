@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CurrentItemControllerTest < ActionController::TestCase
+class CurrentItemsControllerTest < ActionController::TestCase
 
   context "a list with several items" do
     setup do
@@ -12,7 +12,7 @@ class CurrentItemControllerTest < ActionController::TestCase
     
     context "who's current item is requested" do
       setup do
-        get :get, :list_id => @list.to_param
+        post :get, :list_id => @list.to_param
         @current_item = assigns(:current_item)
       end
       
@@ -26,7 +26,7 @@ class CurrentItemControllerTest < ActionController::TestCase
       end
 
       should "get the same current_item when it's requested twice " do
-        get :get, :list_id => @list.to_param
+        post :get, :list_id => @list.to_param
         @list.reload
         current_item = @list.get_current_item
         assert_response :success
@@ -51,7 +51,7 @@ class CurrentItemControllerTest < ActionController::TestCase
         end
 
         should "choose a new current_item" do
-          get :get, :list_id => @list.to_param
+          post :get, :list_id => @list.to_param
           new_item = assigns(:current_item)
           assert_not_equal @current_item, new_item
           assert_not_equal @list.reload.get_current_item, @current_item
