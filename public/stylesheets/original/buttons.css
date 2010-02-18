@@ -102,3 +102,7 @@ a.delete{
 a.delete:hover{
   background-color:#d20;
 }
+
+input.title{
+  width:400px;
+}
