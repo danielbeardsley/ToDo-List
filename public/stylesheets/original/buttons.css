@@ -6,7 +6,7 @@ a {
   border:1px solid #77c;
   margin:10px 5px;
   float:left;
-  text-shadow: 1px 1px #55a;
+  text-shadow: 0px 1px #55a;
   font-size:14px;
   border-radius:4px;
   font-weight:bold;
@@ -21,12 +21,15 @@ a:hover {
   background-color:#66f;
 }
 
-a.new_item{
-  background-color:#2c2;
-  text-shadow-color: #1a1;
+a.create{
+  background-color: #5ebc31;
+  border-color:#492;
+  border-radius:4px;
+  text-shadow-color: #4a1;
 }
-a.new_item:hover{
-  background-color:#090;
+a.create:hover{
+  background-color:#3d9e07;
+  text-shadow-color: #250;
 }
 
 
@@ -36,6 +39,7 @@ a.new_item:hover{
 }
 
 .list_name{
+  margin-top:15px;
   font-size:18px;
   color:#666;
   font-weight:bold;
@@ -56,4 +60,45 @@ a.back_door{
   background-color:#ccd;
   color:#999;
   text-shadow:none;
+}
+
+.empty {
+  color:#999;
+  font-size:80%;
+}
+
+a.sneak{
+  background:none;
+  text-shadow:none;
+  color:#aaa;
+  font-size:70%;
+  border:none;
+  font-weight:normal;
+}
+
+a.sneak:hover{
+  color:#444;
+  background:#eee;
+}
+
+.list_buttons_container{
+  width:400px;
+  margin:auto;
+  margin-top:50px;
+}
+
+a.show,
+a.edit,
+a.delete{
+  font-size:10px;
+  padding:0px 5px;
+  margin:4px;
+}
+
+a.delete{
+  background-color:#f41;
+}
+
+a.delete:hover{
+  background-color:#d20;
 }

@@ -1,4 +1,4 @@
-<h1>Listing items</h1>
+<h1>Listing items <%= @list ? "from #{@list.name}" : ''%></h1>
 
 <table>
   <tr>
@@ -10,13 +10,13 @@
   <tr>
     <td><%=h item.title %></td>
     <td><%=h item.due %></td>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', item, :class => 'show' %></td>
+    <td><%= link_to 'Edit', edit_item_path(item), :class => 'edit' %></td>
+    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete, :class => 'delete' %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
 
-<%= link_to 'New item', new_list_item_path(@list) %>
+<%= link_to 'New item', new_list_item_path(@list),:class => 'create' %>
+<%= link_to 'Home', buttons_page %>

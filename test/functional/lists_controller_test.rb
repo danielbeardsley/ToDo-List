@@ -33,6 +33,11 @@ class ListsControllerTest < ActionController::TestCase
       assert_equal "Something", @list.name
     end
 
+    should "work on the show page" do
+      get :show, :id => @list.id
+      assert_response :success
+    end
+
     context "with items" do
       setup do
         @list.items.create(:title => 'item 1a')
@@ -85,11 +90,6 @@ class ListsControllerTest < ActionController::TestCase
         end
       end
     end
-  end
-
-  test "should show list" do
-    get :show, :id => lists(:one).to_param
-    assert_response :success
   end
 
   context "the edit page" do

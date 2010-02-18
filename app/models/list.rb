@@ -25,4 +25,9 @@ class List < ActiveRecord::Base
     self.current_item = nil
     self.save!
   end
+
+  def defer_current_item
+    self.current_item = nil
+    self.save!
+  end
 end

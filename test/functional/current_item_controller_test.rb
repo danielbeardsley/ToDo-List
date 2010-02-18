@@ -65,6 +65,26 @@ class CurrentItemsControllerTest < ActionController::TestCase
 
         should_change("Item model's uncompleted count", :by => -1) {Item.uncompleted.count}
       end
+
+      context "then deferred" do
+        setup do
+          post 'defer', :list_id => @list.to_param
+          @current_item.reload
+        end
+
+        should_redirect_to('Buttons Page') { buttons_lists_path }
+
+        should "not be marked as completed" do
+          assert !@current_item.completed
+          assert_nil @current_item.date_completed
+        end
+
+        should "unset the current_item" do
+          assert_nil @list.current_item
+        end
+
+        should_not_change("Item model's uncompleted count") {Item.uncompleted.count}
+      end
     end
   end
 
