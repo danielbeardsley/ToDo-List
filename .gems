@@ -1,0 +1,2 @@
+thoughtbot-shoulda --source http://gems.github.com
+thoughtbot-factory_girl --source http://gems.github.com
