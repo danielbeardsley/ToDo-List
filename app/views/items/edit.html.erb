@@ -12,6 +12,9 @@
     <%= f.date_select :due %>
   </p>
   <p>
+    <%= link_to_function('Update',
+      "document.getElementById('edit_item_#{@item.id}').submit();",
+      :class => 'create')%>
     <%= f.submit 'Update' %>
   </p>
 <% end %>

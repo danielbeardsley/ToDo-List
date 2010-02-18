@@ -8,11 +8,11 @@
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :due %><br />
-    <%= f.date_select :due %>
+    <%#= f.label :due %><br />
+    <%#= f.date_select :due %>
   </p>
   <p>
-    <%= f.submit 'Create' %>
+    <%= link_to_function 'Create', "document.getElementById('new_item').submit();", :class => 'create' %>
   </p>
 <% end %>
 
