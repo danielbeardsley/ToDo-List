@@ -56,5 +56,21 @@ class ListTest < ActiveSupport::TestCase
       end
     end
 
+    context "and the current item is deferred" do
+      setup do
+        @current_id = @list.get_current_item.id
+        @list.defer_current_item
+        @list.reload
+      end
+
+      should "not mark current_item as completed" do
+        item = Item.find(@current_id)
+        assert !item.completed
+      end
+
+      should "set current_item to nil" do
+        assert_nil @list.current_item
+      end
+    end
   end
 end
