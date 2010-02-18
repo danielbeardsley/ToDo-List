@@ -9,6 +9,12 @@ class CurrentItemsController < ApplicationController
     redirect_to buttons_lists_path
   end
 
+  def defer
+    @list.defer_current_item
+    flash[:notice] = "Item deferred"
+    redirect_to buttons_lists_path
+  end
+
 protected
 
   def load_item_and_list
