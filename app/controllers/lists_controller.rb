@@ -25,7 +25,7 @@ class ListsController < ApplicationController
 
     if @list.save
       flash[:notice] = 'List was successfully created.'
-      redirect_to(@list)
+      redirect_to :action => :index
     else
       render :action => "new"
     end

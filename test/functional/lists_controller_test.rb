@@ -24,7 +24,7 @@ class ListsControllerTest < ActionController::TestCase
     end
 
     should_change('List count', :by => 1) {List.count}
-    should_redirect_to("the lists view page") { list_path(assigns(:list)) }
+    should_redirect_to("the list view page") { lists_path}
 
     should_set_the_flash_to(/was successfully/)
 
