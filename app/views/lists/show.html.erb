@@ -5,9 +5,8 @@
 
 <p>
   <b>Current item:</b>
-  <%=h @list.current_item %>
+  <%= @list.current_item ? @list.current_item.title : "<div class='empty'>(none)</div>" %>
 </p>
-
 
 <%= link_to 'Edit', edit_list_path(@list) %>
 <%= link_to 'Show Items', list_items_path(@list) %>
