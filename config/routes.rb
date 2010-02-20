@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
     lists.resource :current_item, :member => {:get => :post, :complete => :post, :defer => :post}
   end
 
-  map.resources :items
+  map.resources :items, :member => {:complete => :post}
 
 
   # The priority is based upon order of creation: first created -> highest priority.

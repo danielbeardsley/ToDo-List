@@ -27,7 +27,7 @@ class ItemsControllerTest < ActionController::TestCase
 
     context "an item created" do
       setup do
-        post :create, :list_id => @list.to_param, :item => {:title => "Something", }
+        post :create, :list_id => @list.to_param, :item => {:title => "Something"}
         @item = assigns(:item)
       end
 
@@ -35,6 +35,17 @@ class ItemsControllerTest < ActionController::TestCase
       should_redirect_to("Buttons page") { '/lists/buttons' }
 
       should_set_the_flash_to(/was successfully/)
+
+      context "and then marked as completed" do
+        setup do
+          post :complete, :item_id => @item.id
+        end
+
+        should "mark the item as completed" do
+          @item.reload
+          assert @item.completed
+        end
+      end
     end
   end
 

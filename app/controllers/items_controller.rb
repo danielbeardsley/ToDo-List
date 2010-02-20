@@ -43,6 +43,14 @@ class ItemsController < ApplicationController
     redirect_to(list_items_path(@list.id))
   end
 
+  def complete
+    if @item
+      @item.complete
+      @item.list.current_item = nil if @item.list.current_item == @item
+    end
+    redirect_to :back
+  end
+
   private
   def load_item_and_list
     @item = Item.find(params[:id]) if params[:id]

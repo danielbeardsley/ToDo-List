@@ -89,6 +89,7 @@ a.sneak:hover{
 
 a.show,
 a.edit,
+a.complete,
 a.delete{
   font-size:10px;
   padding:0px 5px;
