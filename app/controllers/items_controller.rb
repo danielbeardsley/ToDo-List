@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
       @item.complete
       @item.list.current_item = nil if @item.list.current_item == @item
     end
-    redirect_to :back
+    redirect_to list_items_path(@item.list_id)
   end
 
   private

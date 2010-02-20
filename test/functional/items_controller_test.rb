@@ -45,6 +45,8 @@ class ItemsControllerTest < ActionController::TestCase
           @item.reload
           assert @item.completed
         end
+        
+        should_redirect_to("List index page") { list_items_path(@item.list_id) }
       end
     end
   end
