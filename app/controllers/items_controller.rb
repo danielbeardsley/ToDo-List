@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_filter :load_item_and_list
 
   def index
-    @items = @list.items
+    @items = @list.items.uncompleted
   end
 
   def show
