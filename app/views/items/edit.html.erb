@@ -8,10 +8,6 @@
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :due %><br />
-    <%= f.date_select :due %>
-  </p>
-  <p>
     <%= link_to_function('Update',
       "document.getElementById('edit_item_#{@item.id}').submit();",
       :class => 'create')%>
@@ -19,5 +15,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @item %> |
+<%= link_to 'Show', @item %>
 <%= link_to 'Back', list_items_path(@item.list_id) %>

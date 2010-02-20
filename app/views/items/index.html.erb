@@ -3,16 +3,14 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Due</th>
   </tr>
 
 <% @items.each do |item| %>
   <tr>
     <td><%=h item.title %></td>
-    <td><%=h item.due %></td>
     <td><%= link_to 'Show', item, :class => 'show' %></td>
     <td><%= link_to 'Edit', edit_item_path(item), :class => 'edit' %></td>
-    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete, :class => 'delete' %></td>
+    <td><%= link_to 'Delete', item, :confirm => 'Are you sure you want to delete this item?', :method => :delete, :class => 'delete' %></td>
   </tr>
 <% end %>
 </table>
