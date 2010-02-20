@@ -98,10 +98,12 @@ a.delete{
 a.delete{
   background-color:#f41;
 }
-
 a.delete:hover{
   background-color:#d20;
 }
+
+a.home        {background-color:#f75;}
+a.home:hover  {background-color:#d61;}
 
 input.title{
   width:400px;
