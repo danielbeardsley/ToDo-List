@@ -1,4 +1,5 @@
 <h1>New item</h1>
+<h1>New item <%= @list ? "for #{@list.name}" : ''%></h1>
 
 <% form_for([@list, @item]) do |f| %>
   <%= f.error_messages %>

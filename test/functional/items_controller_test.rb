@@ -20,6 +20,9 @@ class ItemsControllerTest < ActionController::TestCase
       end
 
       should_respond_with :success
+      should "have the list name on the page" do
+        assert_response_contains @list.name
+      end
     end
 
     context "an item created" do
