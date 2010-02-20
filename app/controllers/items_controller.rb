@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 
     if @item.save
       flash[:notice] = 'Item was successfully created.'
-      redirect_to buttons_lists_path
+      redirect_to buttons_page
     else
       render :action => "new"
     end

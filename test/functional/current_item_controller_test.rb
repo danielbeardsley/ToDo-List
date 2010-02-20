@@ -47,7 +47,7 @@ class CurrentItemsControllerTest < ActionController::TestCase
           @current_item.reload
         end
 
-        should_redirect_to('Buttons Page') { buttons_lists_path }
+        should_redirect_to('Buttons Page') { buttons_page }
 
         should "be marked as completed" do
           assert @current_item.completed
@@ -73,7 +73,7 @@ class CurrentItemsControllerTest < ActionController::TestCase
           @current_item.reload
         end
 
-        should_redirect_to('Buttons Page') { buttons_lists_path }
+        should_redirect_to('Buttons Page') { buttons_page }
 
         should "not be marked as completed" do
           assert !@current_item.completed

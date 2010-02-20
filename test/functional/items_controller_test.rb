@@ -32,7 +32,7 @@ class ItemsControllerTest < ActionController::TestCase
       end
 
       should_change('Item count', :by => 1) {Item.count}
-      should_redirect_to("Buttons page") { '/lists/buttons' }
+      should_redirect_to("Buttons page") { buttons_page }
 
       should_set_the_flash_to(/was successfully/)
 

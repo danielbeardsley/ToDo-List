@@ -6,13 +6,13 @@ class CurrentItemsController < ApplicationController
   def complete
     @list.complete_current_item
     flash[:notice] = "Item completed"
-    redirect_to buttons_lists_path
+    redirect_to buttons_page
   end
 
   def defer
     @list.defer_current_item
     flash[:notice] = "Item deferred"
-    redirect_to buttons_lists_path
+    redirect_to buttons_page
   end
 
 protected
