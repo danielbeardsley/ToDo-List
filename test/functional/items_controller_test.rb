@@ -6,14 +6,6 @@ class ItemsControllerTest < ActionController::TestCase
       @list = List.create(:name => "List 1")
     end
 
-    context "get index" do
-      setup do
-        get :index, :list_id => @list.to_param
-      end
-
-      should_respond_with :success
-    end
-
     context "get new" do
       setup do
         get :new, :list_id => @list.to_param

@@ -87,6 +87,7 @@ class ListsControllerTest < ActionController::TestCase
         @lists.each do |l|
           assert_select "a[href=#{new_list_item_path(l.id)}]", true
           assert_select "a[href=#{get_list_current_item_path(l.id)}]", true
+          assert_select "a[href=#{list_path(l.id)}]", true
         end
       end
     end
